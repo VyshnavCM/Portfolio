@@ -1,86 +1,75 @@
 
-// const form = document.getElementById('form');
-// const nameInput = document.getElementById('name');
-// const emailInput = document.getElementById('email');
-// const messageInput = document.getElementById('message');
-
-// form.addEventListener('submit', (event) => {
-//   event.preventDefault();
-//   validateInputs();
-// });
-
-// function validateInputs() {
-//   const nameValue = nameInput.value.trim();
-//   const emailValue = emailInput.value.trim();
-//   const messageValue = messageInput.value.trim();
-
-//   if (nameValue === '') {
-//     setErrorFor(nameInput, 'Name cannot be blank');
-//   } else {
-//     setSuccessFor(nameInput);
-//   }
-
-//   if (emailValue === '') {
-//     setErrorFor(emailInput, 'Email cannot be blank');
-//   } else if (!isEmail(emailValue)) {
-//     setErrorFor(emailInput, 'Email is not valid');
-//   } else {
-//     setSuccessFor(emailInput);
-//   }
-
-//   if (messageValue === '') {
-//     setErrorFor(messageInput, 'Message cannot be blank');
-//   } else {
-//     setSuccessFor(messageInput);
-//   }
-// }
-
-// function setErrorFor(input, message) {
-//   const formGroup = input.parentElement;
-//   const small = formGroup.querySelector('small');
-//   formGroup.classList.add('error');
-//   small.innerText = message;
-// }
-
-// function setSuccessFor(input) {
-//   const formGroup = input.parentElement;
-//   formGroup.classList.remove('error');
-// }
-
-// function isEmail(email) {
-//   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-// }
-
 var nameError = document.getElementById('name-error');
 var phoneError = document.getElementById('phone-error');
 var emailError = document.getElementById('email-error');
 var textError = document.getElementById('message-error');
 var submitError = document.getElementById('submit-error');
 
-function validatename(){
+function validateName() {
   var name = document.getElementById('contact-name').value;
 
-  if (name.length == 0){
+  if (name.length == 0) {
     nameError.innerHTML = 'Name is required';
     return false;
   }
-  if(!name.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)){
+  if (!name.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)) {
     nameError.innerHTML = 'Write full name';
     return false;
   }
-nameError.innerHTML = 'valid';
-return true;
+  nameError.innerHTML = ''
+  return true;
+}
+  function validatePhone() {
+    var phone = document.getElementById('contact-phone').value
 
+    if (phone.length == 0) {
+      phoneError.innerHTML = 'Phone is required'
+      return false
+    }
+    if (phone.length !== 10) {
+      phoneError.innerHTML = 'Phone number should be 10 digits'
+      return false
+    }
+    if (!phone.match(/^[0-9]{10}$/)) {
+      phoneError.innerHTML = 'Only digits'
+      return false;
+    }
+    phoneError.innerHTML = ''
+    return true
+  }
+
+  function validateEmail() {
+    var email = document.getElementById('contact-email').value
+
+    if (email.length == 0) {
+      emailError.innerHTML = 'Email is required'
+      return false
+    }
+    if (!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)) {
+      emailError.innerHTML = 'Invalid email'
+      return false
+
+    }
+    emailError.innerHTML = ''
+    return true
+  }
+function validateMessage(){
+  var message = document.getElementById('contact-message').value
+  var required = 30
+  var left = required - message.length
+
+if(left>0){
+  textError.innerHTML = left +'More characters required'
+  return false;
+}
+textError.innerHTML = ''
+  return true
 }
 
-function validateemail(){
-  var email = doocument.getElementById('contact-email').value;
+function validateForm(){
 
-  if(email.length == 0){
-    emailError.innerHTML = ' email is required';
-    return false;
+  if(!validateName() || !validatePhone() || !validateEmail() || !validateMessage()  ){
+    submitError.innerHTML = 'Please fix error to send'
+    return false
   }
-  emailError.innerHTML = 'valid';
-  return true;
-
 }

@@ -94,7 +94,7 @@
           <a href="https://mir-s3-cdn-cf.behance.net/project_modules/fs/5bc462170375861.645cbc3b5281c.png"
             target="_blank">
             <button class="btn btn-primary ">View CV</button>
-            
+
           </a>
         </div>
       </div>
@@ -309,29 +309,30 @@
               <form id="submit-form">
                 <div class="form-group">
                   <label class="text-light" for="name">Full name</label>
-                  <input type="text" class="form-control" id="contact-name" onkeyup="validatename()" placeholder="Enter your name">
+                  <input type="text" class="form-control" id="contact-name" onkeyup="validateName()"
+                    placeholder="Enter your name">
                   <span class="text-warning" id="name-error"></span>
                 </div>
                 <div class="form-group">
-                  <label class="text-light" for="name">Phone no.</label>
-                  <input type="tel" class="form-control" id="name" placeholder="Phone number">
+                  <label class="text-light" for="phone">Phone no.</label>
+                  <input type="tel" class="form-control" id="contact-phone" onkeyup="validatePhone()"
+                    placeholder="Phone number">
                   <span class="text-warning" id="phone-error"></span>
                 </div>
                 <div class="form-group">
                   <label class="text-light" for="email">Email address</label>
-                  <input type="email" class="form-control" id="contact-email" onkeyup="validateemail()" placeholder="Enter your email">
+                  <input type="email" class="form-control" id="contact-email" onkeyup="validateEmail()"
+                    placeholder="Enter your email">
                   <span class="text-warning" id="email-error"></span>
                 </div>
                 <div class="form-group">
                   <label class="text-light" for="message">Message</label>
-                  <textarea class="form-control" id="message" rows="5" placeholder="Enter your message"
-                    style="resize:none;overflow:hiddeen;"></textarea>
-                  <span class="text-warning" id="message-error">
-                    
-                  </span>
+                  <textarea class="form-control" id="contact-message" onkeyup="validateMessage()" rows="5"
+                    placeholder="Enter your message" style="resize:none;overflow:hiddeen;"></textarea>
+                  <span class="text-warning" id="message-error"></span>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block mt-3 ">Send Message</button>
-                  <span class="text-warning" id="submit-error"></span>
+                <button type="submit" class="btn btn-primary btn-block mt-3 " onclick="return validateForm()">Send Message</button>
+                <span class="text-warning" id="submit-error"></span>
               </form>
               <div class="info d-flex align-items-center justify-content-center text-light ">
 
