@@ -72,3 +72,15 @@ nameError.innerHTML = 'valid';
 return true;
 
 }
+
+function validateemail(){
+  var email = doocument.getElementById('contact-email').value;
+
+  if(email.length == 0){
+    emailError.innerHTML = ' email is required';
+    return false;
+  }
+  emailError.innerHTML = 'valid';
+  return true;
+
+}
